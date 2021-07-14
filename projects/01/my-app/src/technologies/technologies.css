@@ -1,0 +1,36 @@
+.technologies{
+    margin-top: 32px;
+}
+
+.technologies__body{
+    border: 1px solid #9e9b9b;
+    padding: 16px;
+    border-radius: 16px;
+    background: #efeded;
+}
+
+.title{
+    text-decoration: underline;
+}
+
+.list li{
+    list-style: none;
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 8px;
+}
+
+.list li:last-child{
+    margin-bottom: 0;
+}
+
+.list li:before{
+    position: absolute;
+    top: calc(50% - 3px);
+    left: 0;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #4762ce;
+    border-radius: 50%;
+}

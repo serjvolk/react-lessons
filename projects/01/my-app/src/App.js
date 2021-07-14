@@ -1,36 +1,14 @@
-//import logo from './logo.svg';
 import './App.css';
+import Header from './header/header'
+import Technologies from './technologies/technologies';
 
-// Можно создать компонетну как в виде стрелочной функции ...
 const App = () => {
   return (
-      <div>
+      <div id="main">
           <Header />
           <Technologies />
       </div>
   );
-}
-
-// ... так и в виде обычной функции
-
-function Header () {
-    return (
-        <h1>
-            Привет <span>Сережка</span>
-        </h1>
-    );
-}
-
-function Technologies () {
-    return (
-        <div className="App">
-            <ul className="svone">
-                <li>Hellosiodss</li>
-                <li>my</li>
-                <li>friend</li>
-            </ul>
-        </div>
-    );
 }
 
 export default App;
