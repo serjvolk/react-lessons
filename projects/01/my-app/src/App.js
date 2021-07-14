@@ -1,30 +1,36 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
+// Можно создать компонетну как в виде стрелочной функции ...
 const App = () => {
   return (
-    <div className="App">
-      {/*<header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to hreload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>*/}
-      <ul className="svone">
-        <li>Hello</li>
-        <li>my</li>
-        <li>friend</li>
-      </ul>
-    </div>
+      <div>
+          <Header />
+          <Technologies />
+      </div>
   );
+}
+
+// ... так и в виде обычной функции
+
+function Header () {
+    return (
+        <h1>
+            Привет <span>Сережка</span>
+        </h1>
+    );
+}
+
+function Technologies () {
+    return (
+        <div className="App">
+            <ul className="svone">
+                <li>Hellosiodss</li>
+                <li>my</li>
+                <li>friend</li>
+            </ul>
+        </div>
+    );
 }
 
 export default App;
