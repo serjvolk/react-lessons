@@ -6,7 +6,7 @@
     border: 1px solid #9e9b9b;
     padding: 16px;
     border-radius: 16px;
-    background: #efeded;
+    background: #fafafa;
 }
 
 .title{
@@ -22,6 +22,10 @@
 
 .list li:last-child{
     margin-bottom: 0;
+}
+
+.list li span{
+    font-weight: bold;
 }
 
 .list li:before{

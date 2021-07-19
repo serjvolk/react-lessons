@@ -1,11 +1,11 @@
 import './App.css';
-import Header from './header/header'
 import Technologies from './technologies/technologies';
+import Header from "./header/header";
 
 const App = () => {
   return (
       <div id="main">
-          <Header />
+          <Header/>
           <Technologies />
       </div>
   );
