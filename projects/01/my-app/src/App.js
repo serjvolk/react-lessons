@@ -1,6 +1,6 @@
 import './App.css';
-import Technologies from './technologies/technologies';
-import Header from "./header/header";
+import Technologies from './technologies/Technologies';
+import Header from "./header/Header";
 
 const App = () => {
   return (
