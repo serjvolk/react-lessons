@@ -18,4 +18,45 @@
   margin: 0 auto;
 }
 
+.mb-16{
+  margin-bottom: 16px;
+}
+
+.technologiesBody{
+  border: 1px solid #9e9b9b;
+  padding: 16px;
+  border-radius: 16px;
+  background: #fafafa;
+}
+
+.title{
+  text-decoration: underline;
+}
+
+.list li{
+  list-style: none;
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+}
+
+.list li:last-child{
+  margin-bottom: 0;
+}
+
+.list li span{
+  font-weight: bold;
+}
+
+.list li:before{
+  position: absolute;
+  top: calc(50% - 3px);
+  left: 0;
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #4762ce;
+  border-radius: 50%;
+}
+
 
