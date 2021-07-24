@@ -1,0 +1,13 @@
+Чтобы устроить что-то типа динамически обновляемой части контента нужно установить роутер, для этого нужно:
+1) Установить пакет (как и в Gulp): npm install react-router-dom --save 
+Дальше у нас получается есть два разных компонента в моем случае это <Technologies /> и <Comments />,
+которые должны показываться либо один либо другой взависимости от кликнутой ссылки в навигации.
+Для этого добавляем Route.
+1) В инпортах должно появиться: import {BrowserRouter, Route} from "react-router-dom";
+2) Все что внутри return нужно обернуть в <BrowserRouter>
+Там где стоят компоненты было:
+    <Technologies />
+    <Comments />
+Стало:
+    <Route path='/technologies' component={Technologies}/>
+    <Route path='/comments' component={Comments}/>

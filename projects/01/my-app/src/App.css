@@ -9,6 +9,15 @@
   margin: 0;
 }
 
+.main__page{
+  display: flex;
+  padding-bottom: 16px;
+}
+
+.main__content{
+  flex: 1;
+}
+
 .blue{
   color: #4294d7;
 }
