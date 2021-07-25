@@ -1,6 +1,24 @@
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
+function DialogItem (props) {
+    let path = "/dialogs/" + props.id;
+    return (
+        <li>
+            <NavLink to={path} activeClassName={s.activeLink}>{props.name}</NavLink>
+        </li>
+    );
+}
+
+function Messages(props) {
+    let classTypeMessage = (props.type === true) ? s.message__left : s.message__right;
+    return(
+        <div className={classTypeMessage}>
+            <p>{props.message}</p>
+        </div>
+    );
+}
+
 function Dialogs () {
     return (
         <div className={s.message}>
@@ -9,27 +27,17 @@ function Dialogs () {
                     <div className={s.message__peopleList}>
                         <p className={s.title}>Диалоги</p>
                         <ul className={s.list}>
-                            <li>
-                                <NavLink to="/dialogs/1" activeClassName={s.activeLink}>Михаил</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dialogs/2" activeClassName={s.activeLink}>Олег</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dialogs/3" activeClassName={s.activeLink}>Коля</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dialogs/4" activeClassName={s.activeLink}>Жорий</NavLink>
-                            </li>
+                            <DialogItem name="Михаил" id="1"/>
+                            <DialogItem name="Олег" id="2"/>
+                            <DialogItem name="Коля" id="3"/>
+                            <DialogItem name="Жорик" id="4"/>
                         </ul>
                     </div>
                     <div className={s.message__messageList}>
-                        <div className={s.message__left}>
-                            <p>Привет я Михаил, как у тебя дела???</p>
-                        </div>
-                        <div className={s.message__right}>
-                            <p>Все хорошо я учу ReactJS</p>
-                        </div>
+                        <Messages message={"Привет я Михаил, как у тебя дела???"} type={true}/>
+                        <Messages message={"Все хорошо я учу ReactJS"} type={false}/>
+                        <Messages message={"И много уже выучил???"} type={true}/>
+                        <Messages message={"23 урока"} type={false}/>
                     </div>
                 </div>
             </div>

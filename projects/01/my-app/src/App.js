@@ -19,7 +19,7 @@ const App = () => {
                       <div className="main__content">
                           <Route path='/technologies' component={Technologies}/>
                           <Route path='/comments' component={Comments}/>
-                          <Route exact path='/dialogs' component={Dialogs}/>
+                          <Route path='/dialogs' component={Dialogs}/>
                       </div>
                   </div>
               </div>
