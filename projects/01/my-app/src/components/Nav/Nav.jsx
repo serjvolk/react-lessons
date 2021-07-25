@@ -9,10 +9,10 @@ function Nav () {
                     <a href="">Профиль</a>
                 </li>
                 <li className={s.item}>
-                    <a href="">Сообщения</a>
+                    <a href="">Друзья</a>
                 </li>
                 <li className={s.item}>
-                    <a href="">Друзья</a>
+                    <NavLink to="/dialogs" activeClassName={s.activeLink}>Диалоги</NavLink>
                 </li>
                 <li className={s.item}>
                     <NavLink to="/comments" activeClassName={s.activeLink}>Комментарии</NavLink>

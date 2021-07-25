@@ -1,0 +1,86 @@
+.message{
+    margin-top: 32px;
+}
+
+.message__row{
+    display: flex;
+}
+
+.message__peopleList{
+    border: 2px solid #8A93A8;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.title{
+    font-size: 24px !important;
+    line-height: 29px;
+    margin-bottom: 16px;
+}
+
+.list{
+    padding: 16px;
+}
+
+.message__peopleList li{
+    padding: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 18px;
+}
+
+.message__peopleList li:before{
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: calc(50% - 4px);
+    left: 0;
+    background-color: #3D7EFF;
+    border-radius: 50%;
+}
+
+.message__peopleList li:last-child{
+    margin-bottom: 0;
+}
+
+.message__peopleList li a{
+    font-size: 16px;
+    line-height: 18px;
+    color: #15171D;
+}
+
+.message__peopleList li a.activeLink{
+    font-size: 24px;
+    line-height: 26px;
+}
+
+.message__messageList{
+    background-color: #F1F6FB;
+    border-radius: 12px;
+    padding: 16px;
+    margin-left: 16px;
+    flex: 1;
+}
+
+.message__left{
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.message__left p{
+    border-radius: 12px;
+    padding: 4px 12px;
+    border: 1px solid #8A93A8;
+}
+
+.message__right{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message__right p{
+    border-radius: 12px;
+    padding: 4px 12px;
+    border: 1px solid #3D7EFF;
+}
