@@ -36,6 +36,9 @@ function Dialogs () {
         {id: 4, msg: "23 урока", typeMessage: false}
     ];
 
+    let dialogsElements = dialogsData.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id}/>);
+    let messagesElements = messagesData.map((msg) => <Messages message={msg.msg} typeMessage={msg.typeMessage}/>);
+
     return (
         <div className={s.message}>
             <div className="container">
@@ -43,19 +46,11 @@ function Dialogs () {
                     <div className={s.message__peopleList}>
                         <p className={s.title}>Диалоги</p>
                         <ul className={s.list}>
-                            <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-                            <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
-                            <DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
-                            <DialogItem name={dialogsData[3].name} id={dialogsData[3].id}/>
-                            <DialogItem name={dialogsData[4].name} id={dialogsData[4].id}/>
-                            <DialogItem name={dialogsData[5].name} id={dialogsData[5].id}/>
+                            {dialogsElements}
                         </ul>
                     </div>
                     <div className={s.message__messageList}>
-                        <Messages message={messagesData[0].msg} typeMessage={messagesData[0].typeMessage}/>
-                        <Messages message={messagesData[1].msg} typeMessage={messagesData[1].typeMessage}/>
-                        <Messages message={messagesData[2].msg} typeMessage={messagesData[2].typeMessage}/>
-                        <Messages message={messagesData[3].msg} typeMessage={messagesData[3].typeMessage}/>
+                        {messagesElements}
                     </div>
                 </div>
             </div>
