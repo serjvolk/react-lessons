@@ -11,7 +11,7 @@ function DialogItem (props) {
 }
 
 function Messages(props) {
-    let classTypeMessage = (props.type === true) ? s.message__left : s.message__right;
+    let classTypeMessage = (props.typeMessage === true) ? s.message__left : s.message__right;
     return(
         <div className={classTypeMessage}>
             <p>{props.message}</p>
@@ -20,6 +20,22 @@ function Messages(props) {
 }
 
 function Dialogs () {
+    let dialogsData = [
+        {id: 1, name: "Михаил" },
+        {id: 2, name: "Олег"},
+        {id: 3, name: "Коля"},
+        {id: 4, name: "Оля"},
+        {id: 5, name: "Наташа"},
+        {id: 6, name: "Жорик"}
+    ];
+
+    let messagesData = [
+        {id: 1, msg: "Привет я Михаил, как у тебя дела???", typeMessage: true},
+        {id: 2, msg: "Все хорошо я учу ReactJS", typeMessage: false},
+        {id: 3, msg: "И много уже выучил???", typeMessage: true},
+        {id: 4, msg: "23 урока", typeMessage: false}
+    ];
+
     return (
         <div className={s.message}>
             <div className="container">
@@ -27,17 +43,19 @@ function Dialogs () {
                     <div className={s.message__peopleList}>
                         <p className={s.title}>Диалоги</p>
                         <ul className={s.list}>
-                            <DialogItem name="Михаил" id="1"/>
-                            <DialogItem name="Олег" id="2"/>
-                            <DialogItem name="Коля" id="3"/>
-                            <DialogItem name="Жорик" id="4"/>
+                            <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
+                            <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
+                            <DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
+                            <DialogItem name={dialogsData[3].name} id={dialogsData[3].id}/>
+                            <DialogItem name={dialogsData[4].name} id={dialogsData[4].id}/>
+                            <DialogItem name={dialogsData[5].name} id={dialogsData[5].id}/>
                         </ul>
                     </div>
                     <div className={s.message__messageList}>
-                        <Messages message={"Привет я Михаил, как у тебя дела???"} type={true}/>
-                        <Messages message={"Все хорошо я учу ReactJS"} type={false}/>
-                        <Messages message={"И много уже выучил???"} type={true}/>
-                        <Messages message={"23 урока"} type={false}/>
+                        <Messages message={messagesData[0].msg} typeMessage={messagesData[0].typeMessage}/>
+                        <Messages message={messagesData[1].msg} typeMessage={messagesData[1].typeMessage}/>
+                        <Messages message={messagesData[2].msg} typeMessage={messagesData[2].typeMessage}/>
+                        <Messages message={messagesData[3].msg} typeMessage={messagesData[3].typeMessage}/>
                     </div>
                 </div>
             </div>
