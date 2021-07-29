@@ -1,8 +1,6 @@
-import css from "./../Profile.module.css";
-
 function Posts (props) {
     return (
-       <li>{props.postMessage}</li>
+       <li id={props.id}>{props.postMessage}</li>
     );
 }
 export default Posts;
