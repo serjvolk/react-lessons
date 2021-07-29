@@ -1,23 +1,6 @@
 import s from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
-
-function DialogItem (props) {
-    let path = "/dialogs/" + props.id;
-    return (
-        <li>
-            <NavLink to={path} activeClassName={s.activeLink}>{props.name}</NavLink>
-        </li>
-    );
-}
-
-function Messages(props) {
-    let classTypeMessage = (props.typeMessage === true) ? s.message__left : s.message__right;
-    return(
-        <div className={classTypeMessage}>
-            <p>{props.message}</p>
-        </div>
-    );
-}
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
 function Dialogs () {
     let dialogsData = [
@@ -37,7 +20,7 @@ function Dialogs () {
     ];
 
     let dialogsElements = dialogsData.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id}/>);
-    let messagesElements = messagesData.map((msg) => <Messages message={msg.msg} typeMessage={msg.typeMessage}/>);
+    let messagesElements = messagesData.map((msg) => <Message message={msg.msg} typeMessage={msg.typeMessage}/>);
 
     return (
         <div className={s.message}>

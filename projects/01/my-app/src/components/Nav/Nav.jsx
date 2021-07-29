@@ -6,7 +6,7 @@ function Nav () {
         <nav className={s.nav}>
             <ul className={s.list}>
                 <li className={s.item}>
-                    <a href="">Профиль</a>
+                    <NavLink to="/profile" activeClassName={s.activeLink}>Профиль</NavLink>
                 </li>
                 <li className={s.item}>
                     <a href="">Друзья</a>
