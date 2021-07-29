@@ -3,15 +3,15 @@ import ProfileInfo from "./PrifileInfo/ProfileInfo";
 import Posts from "./PrifileInfo/Posts";
 
 function Profile (props) {
-    console.log(props);
 
+    let postsElements = props.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id}/>);
 
     return (
         <div className={css.profile}>
             <div className="container">
                 <ProfileInfo />
                 <ul className={css.posts}>
-                    {props.postsElements}
+                    {postsElements}
                 </ul>
             </div>
         </div>
