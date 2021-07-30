@@ -3,8 +3,7 @@ import ProfileInfo from "./PrifileInfo/ProfileInfo";
 import Posts from "./PrifileInfo/Posts";
 
 function Profile (props) {
-
-    let postsElements = props.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id}/>);
+    let postsElements = props.posts.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id}/>);
 
     return (
         <div className={css.profile}>
