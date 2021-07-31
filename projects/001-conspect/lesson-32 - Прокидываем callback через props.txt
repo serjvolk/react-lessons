@@ -1,0 +1,35 @@
+В предыдущем уроке мы просто выводили алертом сообщение.
+let addPost = () => {
+    let text = newPostElement.current.value;
+    alert(text);
+}
+
+Теперь нужно это сообщение добавить в state.
+Для этого в state.js пишем функцию которая будет добавлять новое сообщение в state.profilePage.posts
+Она выглядит так: 
+export let addPost = (postMessage) => {
+    let newPost = {
+        id: 5,
+        msg: postMessage
+    };
+    state.profilePage.posts.push(newPost);
+}
+
+Далее мы эту функцию экспортируем в index.js и потом прокидываем ее через props аж до Profile.jsx.
+Теперь в Profile.jsx функция которая обрабатывает клик выглядит уже по новому:
+let addPostMessage = () => {
+    let text = newPostElement.current.value;
+    props.addPost(text);
+}
+
+А сам клик выглядит так: <button onClick={addPostMessage}>Сохранить</button>
+
+я ее переименовал из addPost в addPostMessage чтоб самому не запутаться так как есть еще одна
+функция addPost. Так которая пришла к Profile.jsx через props, та которая прописана аж в state.js.
+
+
+ВНИМАНИЕ!!! Теперь на странице Профиль если добавить новый пост он добавиться но не отрисуется (судя по 
+всему отрисовка в следующем уроке), для этого нужно кликнуть например по Диалоги а потом опять по Профиль,
+для того чтобы профиль перерисовался.
+
+ 

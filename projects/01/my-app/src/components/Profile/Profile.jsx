@@ -8,9 +8,9 @@ function Profile (props) {
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {
+    let addPostMessage = () => {
         let text = newPostElement.current.value;
-        alert(text);
+        props.addPost(text);
     }
 
     return (
@@ -22,7 +22,7 @@ function Profile (props) {
                 </ul>
                 <div className={css.addPost}>
                     <input type="text" autocomplete="off" ref={newPostElement}/>
-                    <button onClick={addPost}>Сохранить</button>
+                    <button onClick={addPostMessage}>Сохранить</button>
                 </div>
             </div>
         </div>
