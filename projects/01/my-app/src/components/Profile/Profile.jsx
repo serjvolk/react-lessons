@@ -10,6 +10,7 @@ function Profile (props) {
 
     let addPostMessage = () => {
         let text = newPostElement.current.value;
+        newPostElement.current.value = "";
         props.addPost(text);
     }
 
