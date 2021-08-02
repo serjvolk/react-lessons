@@ -6,7 +6,6 @@ import Comments from "./components/Comments/Comments";
 import Nav from "./components/Nav/Nav";
 import Dialogs from "./components/Dialogs/Dialogs";
 import Profile from "./components/Profile/Profile";
-import {addPost, newPost} from "./redux/state";
 
 const App = (props) => {
   return (
@@ -19,7 +18,7 @@ const App = (props) => {
                           <Nav />
                       </div>
                       <div className="main__content">
-                          <Route path='/profile' render={ () => <Profile profilePage={props.appState.profilePage} addPost={addPost} newPost={newPost} /> }/>
+                          <Route path='/profile' render={ () => <Profile profilePage={props.appState.profilePage} addPost={props.addPost} newPostText={props.newPostText} /> }/>
                           <Route path='/technologies' render={ () => <Technologies /> }/>
                           <Route path='/comments' render={ () => <Comments /> }/>
                           <Route path='/dialogs' render={ () => <Dialogs dialogs={props.appState.dialogsPage}/> }/>

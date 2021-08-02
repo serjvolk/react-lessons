@@ -1,0 +1,22 @@
+Пару уроков назад мы создать файлик render.js в котором была функция для отрисовки DOM.
+Ее нужно было создать для того чтобы избавиться от круговорота импортов. Однако мы его создали по новой.
+Теперь исправляем свою ошибку.
+
+Последовательность действий:
+1) state импортируется в index.js, больше state нигде не импортируется.
+2) В index.js есть функция которая перерисовует DOM: rerenderEntireTree
+3) В state есть функции (addPost, newPostText) которым нужна эта функция (rerenderEntireTree) для того
+чтобы перерисовать DOM когда они закончат то что делали. 
+4) Чтобы state принял эту функцию от index.js(именно принял а не импортировал) создано две функции(в state.js):
+
+let rerenderEntireTree;
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+}
+
+... где rerenderEntireTree пока еще пустая.
+
+5) В index.js вызывается subscribe(rerenderEntireTree); куда передается rerenderEntireTree которая есть в index.js
+и когда subscribe ее принимает он создает получается и у себя rerenderEntireTree; 
+
+Вот такая вот какаха)))
