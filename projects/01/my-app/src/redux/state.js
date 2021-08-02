@@ -7,7 +7,8 @@ let state = {
             {id: 1, msg: "Вечером побегала с орехом..."},
             {id: 2, msg: "Ночью сплю с орехом..."},
             {id: 3, msg: "Сниться мне орех"}
-        ]
+        ],
+        newPostText: ''
     },
     dialogsPage: {
         dialogs: [
@@ -27,12 +28,18 @@ let state = {
     }
 };
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id: 5,
-        msg: postMessage
+        msg: state.profilePage.newPostText
     };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = "";
+    rerenderEntireTree(state);
+}
+
+export let newPost = (postMessage) => {
+    state.profilePage.newPostText = postMessage;
     rerenderEntireTree(state);
 }
 

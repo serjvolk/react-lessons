@@ -4,14 +4,13 @@ import Posts from "./PrifileInfo/Posts";
 import React from "react";
 
 function Profile (props) {
-    let postsElements = props.posts.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id}/>);
+    let postsElements = props.profilePage.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id}/>);
 
     let newPostElement = React.createRef();
 
-    let addPostMessage = () => {
+    let onPostChange = () => {
         let text = newPostElement.current.value;
-        newPostElement.current.value = "";
-        props.addPost(text);
+        props.newPost(text);
     }
 
     return (
@@ -22,8 +21,8 @@ function Profile (props) {
                     {postsElements}
                 </ul>
                 <div className={css.addPost}>
-                    <input type="text" autocomplete="off" ref={newPostElement}/>
-                    <button onClick={addPostMessage}>Сохранить</button>
+                    <input onChange={onPostChange} type="text" ref={newPostElement} value={props.profilePage.newPostText}/>
+                    <button onClick={props.addPost}>Сохранить</button>
                 </div>
             </div>
         </div>

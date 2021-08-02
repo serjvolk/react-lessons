@@ -1,0 +1,6 @@
+При каждом onChange для input отправляем значение в state.profilePage.newPostText. И там храниться как текущее значение поля
+input. И как только мы нажимаем сохранить, это значение просто берется из временного state.profilePage.newPostText и пушим его в
+state.profilePage.posts.push(... ).
+Потом значению state.profilePage.newPostText даем пустоту и перерисовуем DOM.
+
+И получает что мы добавили новый пост, текст которого state знал, так как при каждом изменении input, в state записывалось новое значение.
