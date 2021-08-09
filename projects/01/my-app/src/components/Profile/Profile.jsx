@@ -13,6 +13,10 @@ function Profile (props) {
         props.newPostText(text);
     }
 
+    let addPost = () => {
+        props.addPost();
+    }
+
     return (
         <div className={css.profile}>
             <div className="container">
@@ -22,7 +26,7 @@ function Profile (props) {
                 </ul>
                 <div className={css.addPost}>
                     <input onChange={onPostChange} type="text" ref={newPostElement} value={props.profilePage.newPostTextVal}/>
-                    <button onClick={props.addPost}>Сохранить</button>
+                    <button onClick={addPost}>Сохранить</button>
                 </div>
             </div>
         </div>
