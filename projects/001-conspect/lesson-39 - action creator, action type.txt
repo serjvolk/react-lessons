@@ -1,0 +1,13 @@
+Кароче говоря творится какая-то херня, а конкретно:
+
+Мы создвали такие функции:
+export const addPostActionCreator = () => ({type: ADD_POST});
+export const updateNewPostActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, postMessage: text});
+
+и их мы передаем аж в Profile.jsx для того чтобы не путаться в названиях типа 'ADD-POST' и не допускать ошибки.
+Дополнительно мы 'ADD-POST' запихнули в переменные типа:
+const ADD_POST = 'ADD-POST';
+
+и теперь когда нам нужно 'ADD-POST' мы пишем константу ADD_POST. И если вдруг мы допустим ошибку, то React 
+ругнется, мы это заметим, и быстро исправим ошибку.
+
