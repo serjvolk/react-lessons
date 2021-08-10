@@ -10,11 +10,11 @@ function Profile (props) {
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.newPostText(text);
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', postMessage: text});
     }
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch({type: 'ADD-POST'});
     }
 
     return (

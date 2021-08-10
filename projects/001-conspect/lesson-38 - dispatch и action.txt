@@ -1,0 +1,17 @@
+Кароче говоря очень легкий урок, мы функции которые были в store перенесли в dispatch
+только теперь это не функции а набор правил if else.
+
+
+if(action.type === 'ADD-POST'){
+    let newPost = {
+        id: 5,
+        msg: this._state.profilePage.newPostTextVal
+    };
+    this._state.profilePage.posts.push(newPost);
+    this._state.profilePage.newPostTextVal = "";
+    this._callSubscriber(this._state);
+}else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+    this._state.profilePage.newPostTextVal = action.postMessage;
+    this._callSubscriber(this._state);
+}
+          
