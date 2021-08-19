@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let store = {
     _state: {
@@ -26,7 +28,8 @@ let store = {
                 {id: 2, msg: "Все хорошо я учу ReactJS", typeMessage: false},
                 {id: 3, msg: "И много уже выучил???", typeMessage: true},
                 {id: 4, msg: "23 урока", typeMessage: false}
-            ]
+            ],
+            newMessageTextVal: ''
         }
     },
     _callSubscriber(){
@@ -52,12 +55,26 @@ let store = {
         }else if(action.type === UPDATE_NEW_POST_TEXT){
             this._state.profilePage.newPostTextVal = action.postMessage;
             this._callSubscriber(this._state);
+        }else if(action.type === UPDATE_NEW_MESSAGE_TEXT){
+            this._state.dialogsPage.newMessageTextVal = action.messageText;
+            this._callSubscriber(this._state);
+        }else if(action.type === SEND_MESSAGE){
+            let newMessage = {
+                id: 5,
+                msg: this._state.dialogsPage.newMessageTextVal,
+                typeMessage: false
+            };
+            this._state.dialogsPage.messages.push(newMessage);
+            this._state.dialogsPage.newMessageTextVal = "";
+            this._callSubscriber(this._state);
         }
     }
 }
 
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, postMessage: text});
+export const addMessageActionCreator = () => ({type: SEND_MESSAGE});
+export const updateNewMessageActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: text});
 
 export default store;
 window.store = store;

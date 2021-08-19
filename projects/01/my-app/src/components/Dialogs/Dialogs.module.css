@@ -21,6 +21,10 @@
     padding: 16px;
 }
 
+.message__peopleList{
+    width: 200px;
+}
+
 .message__peopleList li{
     padding: 8px;
     margin-bottom: 8px;
@@ -54,12 +58,42 @@
     line-height: 26px;
 }
 
-.message__messageList{
+.message__content{
+    flex: 1;
     background-color: #F1F6FB;
     border-radius: 12px;
-    padding: 16px;
     margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #F1F6FB;
+}
+
+.message__messageList{
     flex: 1;
+    padding: 16px;
+}
+
+.message__input{
+    display: flex;
+}
+
+.message__input input{
+    font-size: 16px;
+    line-height: 18px;
+    padding-left: 16px;
+    flex: 1;
+}
+.message__input button{
+    font-size: 24px;
+    line-height: 29px;
+    padding: 4px 16px;
+    background-color: #3D7EFF;
+    color: #fff;
+}
+
+.message__input button:hover{
+    opacity: 0.8;
 }
 
 .message__left{
