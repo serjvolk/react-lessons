@@ -39,7 +39,6 @@ function Dialogs (props) {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

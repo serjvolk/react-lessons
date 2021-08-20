@@ -1,7 +1,21 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-const profileReducer = (state, action) => {
+let initialState = {
+    posts: [
+        {id: 0, msg: "Утром я побегала с орехом..." },
+        {id: 1, msg: "Вечером побегала с орехом..."},
+        {id: 2, msg: "Ночью сплю с орехом..."},
+        {id: 3, msg: "Сниться мне орех"}
+    ],
+    newPostTextVal: ''
+}
+
+/* Мы в redux-store вызываем profileReducer, но программа не работает так как в
+* state === undefined, поэтому если state нету, мы присваиваем state-у initialState,
+* типа задаем ему значение по дефолту */
+
+const profileReducer = (state = initialState, action) => {
     switch(action.type){
         case ADD_POST:
             let newPost = {
