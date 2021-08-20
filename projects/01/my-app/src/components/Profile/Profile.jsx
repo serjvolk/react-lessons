@@ -2,7 +2,7 @@ import css from "./Profile.module.css";
 import ProfileInfo from "./PrifileInfo/ProfileInfo";
 import Posts from "./PrifileInfo/Posts";
 import React from "react";
-import {addPostActionCreator, updateNewPostActionCreator} from "../../redux/state";
+import {addPostActionCreator, updateNewPostActionCreator} from "../../redux/profile-reducer";
 
 function Profile (props) {
     let postsElements = props.profilePage.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id}/>);
