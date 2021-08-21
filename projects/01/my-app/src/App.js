@@ -18,10 +18,10 @@ const App = (props) => {
                           <Nav />
                       </div>
                       <div className="main__content">
-                          <Route path='/profile' render={ () => <ProfileContainer store={props.store}/> }/>
+                          <Route path='/profile' render={ () => <ProfileContainer/> }/>
                           <Route path='/technologies' render={ () => <Technologies /> }/>
                           <Route path='/comments' render={ () => <Comments /> }/>
-                          <Route path='/dialogs' render={ () => <DialogsContainer store={props.store}/> }/>
+                          <Route path='/dialogs' render={ () => <DialogsContainer/> }/>
                       </div>
                   </div>
               </div>

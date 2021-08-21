@@ -1,0 +1,22 @@
+Кароче Context API это типа похоже на глобальные переменные в JS. 
+Димыч про это расскажет но это применять на практике не нужно, так как это плохо
+иметь глобальные объекты.
+
+Мы создали файлик StoreContext c таким содержимым:
+	import React from "react";
+
+	const StoreContext = React.createContext(null);
+
+	export default StoreContext;
+
+Далее мы в файлике index.js обернули App в StoreContext, вот так:
+	<StoreContext.Provider value={store}>
+            <App/>
+        </StoreContext.Provider>
+
+и в App мы уже state не передаем так как все его дочерние компоненты могут обратится к нему 
+напрямую.
+
+Кароче если объяснять здесь все изменения то легче застрелиться))))
+
+Хочешь увидеть изменения сравни два коммита в гите. Пакакули))
