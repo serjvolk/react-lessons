@@ -1,0 +1,19 @@
+Кароче говоря, нам больше не нужен в index.js функция rerenderEntireTree потому что
+connect сам может сдедить за изменениями state и когда увидит изменения, перерисует имеено ту область
+где есть изменения, а не весь DOM как это делала rerenderEntireTree.
+
+Но есть один проблемосик, чтобы connect перерисовался нужно в редьюсарах переписать что-то типа на такое:
+ 	case ADD_POST: {
+            let newPost = {
+                id: 5,
+                msg: state.newPostTextVal
+            };
+            let stateCopy = {...state};
+            stateCopy.posts = [...state.posts];
+            stateCopy.posts.push(newPost);
+            stateCopy.newPostTextVal = "";
+            return stateCopy;
+        }
+
+тоесть мы берем старый state копируем его, в копию вносим изменения и возвращаем измененный state,
+чтобы потом connect сравнил старый (state) с новым (stateCopy) и увидил где есть изменения.

@@ -7,26 +7,14 @@ import App from './App';
 import './index.css';
 
 
-let rerenderEntireTree = (state) => {
-    ReactDOM.render(
-        <React.StrictMode>
-            <Provider store={store}>
-                <App/>
-            </Provider>
-        </React.StrictMode>,
-        document.getElementById('root')
-    );
-}
-rerenderEntireTree(store.getState());
-
-// У меня почему-то работает так как в строчке ниже
-// store.subscribe(rerenderEntireTree);
-
-// А у Димыча верхний вариант не работает, поэтому пишем так:
-store.subscribe(() =>{
-    let state = store.getState();
-    rerenderEntireTree(state);
-});
+ReactDOM.render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
