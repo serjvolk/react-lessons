@@ -1,7 +1,10 @@
-import React from "react";
-import {addMessageActionCreator, updateNewMessageActionCreator} from "../../redux/dialogs-reducer";
-import Dialogs from "./Dialogs";
-import {connect} from "react-redux";
+И так, начинаем работу с библой react-redux:
+	npm install react-redux --save
+
+Кароче говоря тепеть чтобы получить state мы используем connect библиотеки react-redux.
+
+
+И теперь это выглядит так:
 
 // Формируем данные для Dialogs
 let mapStateToProps = (state) => {
@@ -27,3 +30,7 @@ let mapDispatchToProps = (dispatch) => {
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
+
+
+Кстати после этого урока не работает впичатывание символов в инпуты, почему так происходит
+Димыч скажет в следующем уроке.

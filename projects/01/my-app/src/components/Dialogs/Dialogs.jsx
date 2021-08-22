@@ -4,8 +4,8 @@ import Message from "./Message/Message";
 import React from "react";
 
 function Dialogs (props) {
-    let dialogsElements = props.dialogs.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id}/>);
-    let messagesElements = props.messages.map((msg) => <Message message={msg.msg} typeMessage={msg.typeMessage}/>);
+    let dialogsElements = props.dialogsPage.dialogs.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id}/>);
+    let messagesElements = props.dialogsPage.messages.map((msg) => <Message message={msg.msg} typeMessage={msg.typeMessage}/>);
 
     let newMessageElement = React.createRef();
 
@@ -33,7 +33,7 @@ function Dialogs (props) {
                             {messagesElements}
                         </div>
                         <div className={s.message__input}>
-                            <input onChange={onMessageChange} type="text" placeholder={"Введите сообщение"} ref={newMessageElement} value={props.newMessageText}/>
+                            <input onChange={onMessageChange} type="text" placeholder={"Введите сообщение"} ref={newMessageElement} value={props.dialogsPage.newMessageTextVal}/>
                             <button onClick={onAddMessage}>Отправить</button>
                         </div>
                     </div>
