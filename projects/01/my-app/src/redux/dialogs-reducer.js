@@ -22,9 +22,10 @@ let initialState = {
 export const dialogsReducer = (state = initialState, action) => {
     switch (action.type){
         case UPDATE_NEW_MESSAGE_TEXT: {
-            let stateCopy = {...state};
-            stateCopy.newMessageTextVal = action.messageText;
-            return stateCopy;
+            return {
+                ...state,
+                newMessageTextVal: action.messageText // Копируем старый state и в новом сразу же переписываем newMessageTextVal
+            };
         }
         case SEND_MESSAGE: {
             let newMessage = {
@@ -32,11 +33,12 @@ export const dialogsReducer = (state = initialState, action) => {
                 msg: state.newMessageTextVal,
                 typeMessage: false
             };
-            let stateCopy = {...state};
-            stateCopy.messages = [...state.messages];
-            stateCopy.messages.push(newMessage);
-            stateCopy.newMessageTextVal = "";
-            return stateCopy;
+            return {
+                ...state,
+                newMessageTextVal: "",
+                messages: [...state.messages, newMessage] /* Копируем подмассив (мы его переопределяем). После запятой
+                мы как бы пушим newMessage. */
+            };
         }
         default:
             return state;

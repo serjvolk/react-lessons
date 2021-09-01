@@ -4,8 +4,8 @@ import Message from "./Message/Message";
 import React from "react";
 
 function Dialogs (props) {
-    let dialogsElements = props.dialogsPage.dialogs.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id}/>);
-    let messagesElements = props.dialogsPage.messages.map((msg) => <Message message={msg.msg} typeMessage={msg.typeMessage}/>);
+    let dialogsElements = props.dialogsPage.dialogs.map((dialogs) => <DialogItem name={dialogs.name} id={dialogs.id} key={dialogs.id}/>);
+    let messagesElements = props.dialogsPage.messages.map((msg) => <Message message={msg.msg} typeMessage={msg.typeMessage} key={msg.id}/>);
 
     let newMessageElement = React.createRef();
 

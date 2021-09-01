@@ -4,7 +4,7 @@ import Posts from "./PrifileInfo/Posts";
 import React from "react";
 
 function Profile (props) {
-    let postsElements = props.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id}/>);
+    let postsElements = props.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id} key={post.id}/>);
 
     let newPostElement = React.createRef();
 
