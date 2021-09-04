@@ -1,0 +1,22 @@
+Кароче говоря раньше в Users.js запрос на получение пользователей выглядел так:
+	if(props.users.length === 0){
+            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+                props.setUsers(response.data.items);
+            });
+        }
+... но это не есть хорошо, так как во-первых в презентационной компоненте не должно быль логики, 
+во вторых этот запрос выполнялся каждый раз кода мы обращаемся к компоненте Users. Поэтому мы 
+временно сделали так:
+    let getUsers = () => {
+        if(props.users.length === 0){
+            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+                props.setUsers(response.data.items);
+            });
+        }
+    } 
+
+и внутри рендера запихнули кнопку которая запускает эту функцию
+    <button onClick={getUsers}>Get Users</button>
+
+... теперь список users грузится только при нажатии на эту кнопку, но это тоже как бы костыль.
+Чтобы его решить нужно знать классовые компоненты, а это уже следующий урок.
