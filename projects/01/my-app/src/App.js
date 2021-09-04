@@ -6,6 +6,7 @@ import Comments from "./components/Comments/Comments";
 import Nav from "./components/Nav/Nav";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = (props) => {
   return (
@@ -22,6 +23,7 @@ const App = (props) => {
                           <Route path='/technologies' render={ () => <Technologies /> }/>
                           <Route path='/comments' render={ () => <Comments /> }/>
                           <Route path='/dialogs' render={ () => <DialogsContainer/> }/>
+                          <Route path='/users' render={ () => <UsersContainer/> }/>
                       </div>
                   </div>
               </div>
