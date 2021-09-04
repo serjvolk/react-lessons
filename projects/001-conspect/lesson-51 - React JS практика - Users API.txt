@@ -1,0 +1,11 @@
+Начинаем делать ajax запросы на сервак:
+Для ajax запросов устанавливаем библиотеку axios: npm install axios --save
+
+Вот примет get запроса:
+axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+    props.setUsers(response.data.items);
+});
+
+А дальше все предельно просто, я такое делал. Писать ничего не нужно.
+
+ 
