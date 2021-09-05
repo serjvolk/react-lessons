@@ -9,7 +9,7 @@ function Nav () {
                     <NavLink to="/profile" activeClassName={s.activeLink}>Профиль</NavLink>
                 </li>
                 <li className={s.item}>
-                    <a href="">Друзья</a>
+                    <NavLink to="/users" activeClassName={s.activeLink}>Пользователи</NavLink>
                 </li>
                 <li className={s.item}>
                     <NavLink to="/dialogs" activeClassName={s.activeLink}>Диалоги</NavLink>
@@ -19,6 +19,9 @@ function Nav () {
                 </li>
                 <li className={s.item}>
                     <NavLink to="/technologies" activeClassName={s.activeLink}>Мои знания</NavLink>
+                </li>
+                <li className={s.item}>
+                    <a href="">Друзья</a>
                 </li>
             </ul>
         </nav>
