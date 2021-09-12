@@ -1,0 +1,41 @@
+let mapDispatchToProps = (dispatch) => { // Отдаем колбеки которые презентационная компонента может вызывать
+    return {
+        follow: (userId) => {
+            dispatch(followAC(userId));
+        },
+        unfollow: (userId) => {
+            dispatch(unfollowAC(userId));
+        },
+        setUsers: (users) => {
+            dispatch(setUsersAC(users));
+        },
+        setCurrentPage: (pageNumber) => {
+            dispatch(setCurrentPageAC(pageNumber));
+        },
+        setTotalUsersCount: (totalCount) => {
+            dispatch(setTotalUsersCountAC(totalCount));
+        },
+        toggleIsFetching: (isFetching) => {
+            dispatch(toggleIsFetchingAC(isFetching));
+        }
+    }
+}
+
+export default connect(mapStateToProps, {
+    follow: followAC,
+    unfollow: unfollowAC,
+    setUsers: setUsersAC,
+    setCurrentPage: setCurrentPageAC,
+    setTotalUsersCount: setTotalUsersCountAC,
+    toggleIsFetching: toggleIsFetchingAC
+})(UsersContainer);
+
+
+Кароче говоря mapDispatchToProps можно сакратить и записать подругому.
+
+Далее мы сократили вообще до такого:
+export default connect(mapStateToProps, {
+    follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching
+})(UsersContainer);
+
+но теперь в редьюсерах пришлось у экшн креаторов убрать AC. И так же и в inport-ах.
