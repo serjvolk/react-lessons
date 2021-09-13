@@ -1,19 +1,24 @@
 import css from "./../Profile.module.css";
+import Preloader from "../../common/Preloader/Preloader";
 
-function ProfileInfo () {
+function ProfileInfo (props) {
+    if(!props.profile){
+        return <Preloader />
+    }
     return (
         <div className={css.body}>
             <div className={css.row}>
                 <div className={css.col}>
                     <div className={css.image}>
-                        <img src="https://slovnet.ru/wp-content/uploads/2019/03/8-18.jpg" alt=""/>
+                        <img src={props.profile.photos.large} alt=""/>
                     </div>
                 </div>
                 <div className={css.col}>
                     <div className={css.text}>
-                        <p className={css.name}>Белочка Шмэля</p>
+                        <p className={css.name}>{props.profile.fullName}</p>
                         <p className={css.age}>2.7 лет</p>
                         <p className={css.sity}>Антарктида</p>
+                        <p className={css.description}>{props.profile.aboutMe}</p>
                     </div>
                 </div>
             </div>

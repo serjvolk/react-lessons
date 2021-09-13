@@ -10,7 +10,7 @@ function Profile (props) {
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        props.updateNewPost(text);
     }
 
     let onAddPost = () => {
@@ -20,7 +20,7 @@ function Profile (props) {
     return (
         <div className={css.profile}>
             <div className="container">
-                <ProfileInfo />
+                <ProfileInfo profile={props.profile}/>
                 <ul className={css.posts}>
                     {postsElements}
                 </ul>

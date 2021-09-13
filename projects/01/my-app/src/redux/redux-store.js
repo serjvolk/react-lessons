@@ -13,5 +13,6 @@ let reducers = combineReducers({
 
 // Отдаем комбайн с редьюсерами стору
 let store = createStore(reducers);
+window.store = store;
 
 export default store;
