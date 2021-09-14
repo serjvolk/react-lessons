@@ -1,0 +1,25 @@
+Чтобы реакт мог читать урлу нужно дописать:
+let withUrlDataContainerComponent = withRouter(ProfileContainer);
+
+мы как бы создаем над контейнерной компонентой ProfileContainer еще одну контейнерную компоненту
+которая читает урл и потом через пропс прокидывает это в ProfileContainer.
+
+
+Далее мы в App.js должны указать что для profile/ нужен и параметр, вот таким образом:
+ <Route path='/profile/:userId' render={ () => <ProfileContainer/> }/>
+
+
+Далее в componentDidMount получаем этот userId
+let userId = this.props.match.params.userId;
+
+... и передаем его в конец ajax запроса
+axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(
+
+
+Но если мы переходим просто по profile/ без userId, что тогда будет???
+На данный момент ничего, пустая страница, для того чтобы что-то было мы в App.js
+пишем так path='/profile/:userId?' тоесть говорим что этот параметр необязателен.
+и теперь при загрузке просто profile/ у на userId будет undefined.
+
+Теперь допичаваем if(!userId){userId =2;} и получается что когда userId не указан у нас 
+грузится пользователь с userId = 2.

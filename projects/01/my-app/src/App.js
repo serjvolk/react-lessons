@@ -19,7 +19,7 @@ const App = (props) => {
                           <Nav />
                       </div>
                       <div className="main__content">
-                          <Route path='/profile' render={ () => <ProfileContainer/> }/>
+                          <Route path='/profile/:userId?' render={ () => <ProfileContainer/> }/>
                           <Route path='/technologies' render={ () => <Technologies /> }/>
                           <Route path='/comments' render={ () => <Comments /> }/>
                           <Route path='/dialogs' render={ () => <DialogsContainer/> }/>
