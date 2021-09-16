@@ -1,18 +1,18 @@
 import './App.css';
 import {BrowserRouter, Route} from "react-router-dom";
 import Technologies from './components/Technologies/Technologies';
-import Header from "./components/Header/Header";
 import Comments from "./components/Comments/Comments";
 import Nav from "./components/Nav/Nav";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = (props) => {
   return (
       <BrowserRouter>
           <div id="main">
-              <Header/>
+              <HeaderContainer/>
               <div className="container">
                   <div className="main__page">
                       <div className="main__aside">

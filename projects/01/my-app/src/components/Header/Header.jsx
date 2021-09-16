@@ -1,10 +1,11 @@
-import "./Header.css";
+import css from  "./Header.module.css";
+import {NavLink} from "react-router-dom";
 
-function Header () {
+function Header (props) {
     return (
-        <div className="header">
+        <div className={css.header}>
             <h1>Я буду знать ReactJS</h1>
-            <h2>Сергей Волков</h2>
+            {props.isAuth ? <h2>{props.login}</h2> : <NavLink to={'/login'} className={css.link}>Login</NavLink>}
         </div>
     );
 }
