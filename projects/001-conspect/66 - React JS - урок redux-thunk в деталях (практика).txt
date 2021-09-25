@@ -1,0 +1,26 @@
+Кароче санки. Это что-то типа объеденить несколько дейч=ствий в одно.
+
+Тоесть в UsersContainer у нас было так:
+	this.props.toggleIsFetching(true);
+	usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.toggleIsFetching(false);
+            this.props.setUsers(data.items);
+            this.props.setTotalUsersCount(data.totalCount);
+        });
+... а стало так:
+	this.props.getUsersThunkCreator();
+... мы в users-reducer создали санку:
+	export const getUsersThunkCreator = (currentPage, pageSize) => {
+    	    return (dispatch) => {
+                dispatch(toggleIsFetching(true));
+
+                usersAPI.getUsers(currentPage, pageSize).then(data => {
+                    dispatch(toggleIsFetching(false));
+                    dispatch(setUsers(data.items));
+                    dispatch(setTotalUsersCount(data.totalCount));
+                });
+            }
+        }
+... и чтоб она заработала нужно в redus-store, добавить applyMiddleware():
+	let store = createStore(reducers, applyMiddleware());
+... и еще установить санки: npm i redux-thunk
