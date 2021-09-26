@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
@@ -18,8 +19,6 @@ class ProfileContainer extends React.Component {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-
 // Формируем данные для Profile
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
@@ -27,8 +26,8 @@ let mapStateToProps = (state) => ({
     newPostText: state.profilePage.newPostTextVal
 });
 
-let withUrlDataContainerComponent = withRouter(AuthRedirectComponent); // Читаем url
-
-/*Тут мы как бы конектим Profile к store. Где функция mapStateToProps передает в Profile пропсы которые являются данными,
-* а mapDispatchToProps передает колбэки.  */
-export default connect(mapStateToProps, {addPost, getUserProfile, updateNewPost})(withUrlDataContainerComponent);
+export default compose(
+    connect(mapStateToProps, {addPost, getUserProfile, updateNewPost}),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer);

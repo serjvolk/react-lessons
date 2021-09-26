@@ -3,6 +3,7 @@ import {addMessageActionCreator, updateNewMessageActionCreator} from "../../redu
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 // Формируем данные для Dialogs
 let mapStateToProps = (state) => {
@@ -23,10 +24,7 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(Dialogs);
-
-/*Тут мы как бы конектим Dialogs к store. Где функция mapStateToProps передает в Dialogs пропсы которые являются данными,
-* а mapDispatchToProps передает колбэки.  */
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
-
-export default DialogsContainer;
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Dialogs);
