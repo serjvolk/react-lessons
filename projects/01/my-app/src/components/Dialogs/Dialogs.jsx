@@ -19,8 +19,6 @@ function Dialogs (props) {
         props.addMessage();
     }
 
-    if (!props.isAuth) return <Redirect to={"/login"}/>;
-
     return (
         <div className={s.message}>
             <div className="container">

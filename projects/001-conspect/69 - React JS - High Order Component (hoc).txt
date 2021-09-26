@@ -1,0 +1,26 @@
+Кароче в чем фишка, в предыдущем уроке мы делели редирект, и получается что нужно пихать строчку
+	if (!props.isAuth) return <Redirect to={"/login"}/>;
+... в каждую компоненту которую мы делаем, но это классно поэтому есть хоки.
+Что мы делаем, нам нужно создать какбы одну оберточную компоненту для всех компонент, и в
+этой оберточной компоненте писать эту строчку которая будеит применяться ко всем компонентам.
+
+Вот пример:
+
+export const withAuthRedirect = (Component) => {
+    class RedirectComponent extends React.Component{
+        render(){
+            if (!this.props.isAuth) return <Redirect to={"/login"}/>;
+            return <Component {...this.props}/>
+        }
+    }
+
+    return RedirectComponent;
+}
+
+теперь в нужных нам файлах мы пишем так: 
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
+
+Дальше творилась какая-то дичь. Надеюсь когда-то дойдет))) Мы типа создали отдельный коннект для
+withAuthRedirect, и коннект внутри компонент оборачивали этим withAuthRedirect. Я написал, а что написал 
+сам не понял.

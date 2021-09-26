@@ -1,8 +1,9 @@
 import React from "react";
 import {addPost, getUserProfile, updateNewPost} from "../../redux/profile-reducer";
 import Profile from "./Profile";
-import {Redirect, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
@@ -11,23 +12,22 @@ class ProfileContainer extends React.Component {
         this.props.getUserProfile(userId);
     }
     render(){
-        if (!this.props.isAuth) return <Redirect to={"/login"}/>;
-
         return (
             <Profile {...this.props} profile={this.props.profile}/>
         )
     }
 }
 
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
 // Формируем данные для Profile
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     posts: state.profilePage.posts,
-    newPostText: state.profilePage.newPostTextVal,
-    isAuth: state.auth.isAuth
+    newPostText: state.profilePage.newPostTextVal
 });
 
-let withUrlDataContainerComponent = withRouter(ProfileContainer); // Читаем url
+let withUrlDataContainerComponent = withRouter(AuthRedirectComponent); // Читаем url
 
 /*Тут мы как бы конектим Profile к store. Где функция mapStateToProps передает в Profile пропсы которые являются данными,
 * а mapDispatchToProps передает колбэки.  */

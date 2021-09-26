@@ -8,6 +8,7 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class UsersContainer extends React.Component{
@@ -46,7 +47,8 @@ let mapStateToProps = (state) => { // Принимает весь state и от�
     }
 }
 
-export default connect(mapStateToProps, {
+// Это пиздец, тут я типа обернул connect компонентой которая проверяет логинизацию юзера
+export default withAuthRedirect(connect(mapStateToProps, {
     follow, unfollow, setCurrentPage,
     toggleFollowingProgress, getUsers
-})(UsersContainer);
+})(UsersContainer));
