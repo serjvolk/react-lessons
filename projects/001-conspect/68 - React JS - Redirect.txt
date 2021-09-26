@@ -1,0 +1,15 @@
+Кароче фишка в том чтобы делать Redirect если чел не авторизованный:
+
+Для этого мы создали отдельную компоненту Login:
+
+import React from "react";
+
+const Login = (props) => {
+    return <h1>Login</h1>
+}
+
+export default Login;
+
+А внутри компонент которые не должны отображаться для незалогиненных вставили такую строчку (апример в Dialogs.jsx):
+
+if (!props.isAuth) return <Redirect to={"/login"}/>;
