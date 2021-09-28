@@ -1,5 +1,6 @@
 import css from "./../Profile.module.css";
 import Preloader from "../../common/Preloader/Preloader";
+import ProfileStatus from "./ProfileStatus";
 
 function ProfileInfo (props) {
     if(!props.profile){
@@ -22,6 +23,7 @@ function ProfileInfo (props) {
                     </div>
                 </div>
             </div>
+            <ProfileStatus status={"Hello my friends"}/>
         </div>
     );
 }

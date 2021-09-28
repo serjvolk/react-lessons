@@ -1,0 +1,16 @@
+Кароче говоря ничего сложного, создали на вкладке Profile свой статус. Но
+фишка урока в том чтобы показать локальный state. Вот как это выглядит: (файл ProfileStatus.jsx) 
+
+class ProfileStatus extends React.Component{
+    state = {
+        editMode: false,
+    }
+
+    activateEditMode = () => {
+        this.setState({editMode: !this.state.editMode});
+    }
+
+    render(){
+        return (
+		........
+	
