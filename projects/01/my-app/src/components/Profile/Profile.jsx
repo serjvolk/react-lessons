@@ -20,7 +20,7 @@ function Profile (props) {
     return (
         <div className={css.profile}>
             <div className="container">
-                <ProfileInfo profile={props.profile}/>
+                <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
                 <ul className={css.posts}>
                     {postsElements}
                 </ul>
