@@ -1,0 +1,39 @@
+Кароче очень мощьная тема.
+Получается у нас все инпуты должны хранить свое состояние в state, но это пздц как
+неудобно, потому что пришлось бы прописывать кучу функций для разных действий.
+Для этого есть библа redux-form, она полностью берет на себя управление полями форм,
+она все пишет в state.
+
+Устанавливаем ее: npm i redux-form --save
+
+Далее добавляем редьюсеры в redux-store:
+	import {reducer as formReducer} from "redux-form";
+и в     let reducers = combineReducers({      добавляем:
+	form: formReducer
+
+
+Далее нам нужно форму обернуть хоком. Выглядит это так:
+const LoginReduxForm = reduxForm({
+    form: 'login' // Должно быть уникальное имя
+})(LoginForm);
+
+
+Далее мы input-ы превращаем в Field:
+<input placeholder={"Login"}/>    ----->    <Field component={"input"} name={"login"} placeholder={"Login"}/>
+
+
+Далее получается что хок который мы создали прокидывает в props-ы LoginForm кучу данных.
+Одно из них которое нам нужно это handleSubmit. Говорит о том что теперь он контролирует submit формы.
+Добавляется так: 
+<form onSubmit={props.handleSubmit} className={css.form}>
+
+
+Далее пищем вот эту строчку: <LoginReduxForm onSubmit={onSubmit}/>
+И потом это:
+    const onSubmit = (formData) => {
+        console.log(formData);
+    }
+
+
+И так получается мы получаем данные формы при submit.
+

@@ -1,0 +1,42 @@
+.login{
+    padding: 32px;
+}
+
+.login h1{
+    text-align: center;
+}
+
+.form{
+    padding: 32px;
+    margin-top: 32px;
+    background-color: #9dc4c4;
+    text-align: center;
+}
+
+.form > * {
+    margin-bottom: 16px;
+}
+
+.form input, .form button{
+    width: 300px;
+    border: 2px solid #4762ce;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.form .checkbox{
+    width: auto;
+}
+
+.form button{
+    padding: 8px 64px;
+    border: none;
+    color: #fff;
+    background: linear-gradient(#4762ce, #607ef8);
+}
+
+.form button:hover{
+    background: linear-gradient(#607ef8, #4762ce);
+}
