@@ -1,4 +1,3 @@
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let initialState = {
@@ -15,27 +14,19 @@ let initialState = {
         {id: 2, msg: "Все хорошо я учу ReactJS", typeMessage: false},
         {id: 3, msg: "И много уже выучил???", typeMessage: true},
         {id: 4, msg: "23 урока", typeMessage: false}
-    ],
-    newMessageTextVal: ''
+    ]
 }
 
 export const dialogsReducer = (state = initialState, action) => {
     switch (action.type){
-        case UPDATE_NEW_MESSAGE_TEXT: {
-            return {
-                ...state,
-                newMessageTextVal: action.messageText // Копируем старый state и в новом сразу же переписываем newMessageTextVal
-            };
-        }
         case SEND_MESSAGE: {
             let newMessage = {
                 id: 5,
-                msg: state.newMessageTextVal,
+                msg: action.newMessageBody,
                 typeMessage: false
             };
             return {
                 ...state,
-                newMessageTextVal: "",
                 messages: [...state.messages, newMessage] /* Копируем подмассив (мы его переопределяем). После запятой
                 мы как бы пушим newMessage. */
             };
@@ -45,7 +36,6 @@ export const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreator = () => ({type: SEND_MESSAGE});
-export const updateNewMessageActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: text});
+export const sendMessageActionCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody});
 
 export default dialogsReducer;

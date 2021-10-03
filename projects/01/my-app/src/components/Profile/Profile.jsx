@@ -2,19 +2,13 @@ import css from "./Profile.module.css";
 import ProfileInfo from "./PrifileInfo/ProfileInfo";
 import Posts from "./PrifileInfo/Posts";
 import React from "react";
+import {Field, reduxForm} from "redux-form";
 
 function Profile (props) {
     let postsElements = props.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id} key={post.id}/>);
 
-    let newPostElement = React.createRef();
-
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPost(text);
-    }
-
-    let onAddPost = () => {
-        props.addPost();
+    let addNewPostMessage = (values) => {
+        props.addPostMessage(values.newPostText);
     }
 
     return (
@@ -24,12 +18,23 @@ function Profile (props) {
                 <ul className={css.posts}>
                     {postsElements}
                 </ul>
-                <div className={css.addPost}>
-                    <input onChange={onPostChange} type="text" ref={newPostElement} value={props.newPostText}/>
-                    <button onClick={onAddPost}>Сохранить</button>
-                </div>
+                <AddPostFormRedux onSubmit={addNewPostMessage} />
             </div>
         </div>
     );
 }
+
+const AddPostForm = (props) => {
+    return (
+        <form className={css.addPost} onSubmit={props.handleSubmit}>
+            <Field component={"input"} name={"newPostText"} placeholder={"Enter your post message"}/>
+            <button>Сохранить</button>
+        </form>
+    )
+}
+
+const AddPostFormRedux = reduxForm({form: "addPostMessageForm"})(AddPostForm);
+
+
+
 export default Profile;
