@@ -3,6 +3,10 @@ import ProfileInfo from "./PrifileInfo/ProfileInfo";
 import Posts from "./PrifileInfo/Posts";
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {Textarea} from "../common/FormsControls/FormsControls";
+
+const maxLength10 = maxLengthCreator(10);
 
 function Profile (props) {
     let postsElements = props.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id} key={post.id}/>);
@@ -27,7 +31,7 @@ function Profile (props) {
 const AddPostForm = (props) => {
     return (
         <form className={css.addPost} onSubmit={props.handleSubmit}>
-            <Field component={"input"} name={"newPostText"} placeholder={"Enter your post message"}/>
+            <Field component={Textarea} name={"newPostText"} placeholder={"Enter your post message"} validate={[required, maxLength10]}/>
             <button>Сохранить</button>
         </form>
     )

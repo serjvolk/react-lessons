@@ -1,0 +1,76 @@
+Кароче валидаторы. 
+Они создаются в отдельном файле. Выглядят так:
+
+export const required = value => {
+    if(value) return undefined;
+    return "Field is required"
+}
+
+К инпуту их применяют так:
+<Field component={"input"} name={"newPostText"} placeholder={"Enter your post message"} validate={[required]}/>
+
+
+Далее так как все инпуты обычно имеют еще какие-то span обертки div, мы создаем их в FormsControls и
+уже потом используем их.
+
+
+ВНИМАНИЕ!!! В FormsControls были компоненты Textarea и Input. И они были практически идентичны, 
+есть получается дублирование кода и от него нужно избавиться. Было так:
+
+
+export const Textarea = ({input, meta, ...props}) => {
+    const hasError = meta.touched && meta.error; /* Это расшифровуется как:
+        Если поле было тронуто и имеет ошибку то показать мообщение об ошибке */
+    return (
+        <div className={css.formControl + " " + (hasError ? css.error : "")}>
+            <div>
+                <textarea {...input} {...props}/>
+            </div>
+            {hasError && <span>{meta.error}</span>}
+        </div>
+    )
+}
+
+export const Input = ({input, meta, ...props}) => {
+    const hasError = meta.touched && meta.error; /* Это расшифровуется как:
+        Если поле было тронуто и имеет ошибку то показать мообщение об ошибке */
+    return (
+        <div className={css.formControl + " " + (hasError ? css.error : "")}>
+            <div>
+                <input {...input} {...props}/>
+            </div>
+            {hasError && <span>{meta.error}</span>}
+        </div>
+    )
+}
+
+
+СТАЛО ТАК:
+
+
+const FormControl = ({input, meta, child, ...props}) => {
+    const hasError = meta.touched && meta.error; /* Это расшифровуется как:
+        Если поле было тронуто и имеет ошибку то показать мообщение об ошибке */
+    return (
+        <div className={css.formControl + " " + (hasError ? css.error : "")}>
+            <div>
+                {props.children}
+            </div>
+            {hasError && <span>{meta.error}</span>}
+        </div>
+    )
+}
+
+export const Textarea = (props) => {
+    const {input, meta, child, ...restProps} = props;
+    return <FormControl {...props}><textarea {...input} {...restProps}/></FormControl>
+}
+
+export const Input = (props) => {
+    const {input, meta, child, ...restProps} = props;
+    return <FormControl {...props}><input {...input} {...restProps}/></FormControl>
+}
+
+
+ЕСЛИ ЧЕ, ТО ЭТО НЕМНОГО СЛОЖНО ПОНЯТЬ И ЕСЛИ ЭТО ПОНЯТЬ ТО Я УЖЕ НЕ ДЖУН.
+
