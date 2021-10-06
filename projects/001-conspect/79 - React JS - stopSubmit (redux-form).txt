@@ -1,0 +1,19 @@
+Кароче, послепредыдущего урока у нас осталась проблемка. Дело в том что если пероль не верный,
+мы никак не показывали это пользователю. Сейчас делаем это. Мы используем stopSubmit().
+
+В auth-reducer у нас есть такой код:
+	if(response.data.resultCode === 0){
+            dispatch(getAuthUserData());
+        }else{
+            let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+            dispatch(stopSubmit("login", {_error: message}));
+        }
+
+... где мы в случае если resultCode не равен нулю делаем stopSubmit куда указываем ему 
+какую именно форму мы хотим остановить, а в _error передаем ошибку(общая ошибка).
+
+
+Дополнительно мы сделали еще это: В ProfileContainer у нас была такая строка:
+if(!userId){userId = 19673;} // Если нет userId то показываем пользователя с id = 19673, тоесть меня.
+
+... и это неверно. Нужно самому брать откуда-то свой id-шник.

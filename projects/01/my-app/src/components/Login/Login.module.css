@@ -40,3 +40,10 @@
 .form button:hover{
     background: linear-gradient(#607ef8, #4762ce);
 }
+
+.formSummaryError{
+    border: 1px solid #c17474;
+    font-weight: bold;
+    padding: 8px;
+    color: #c67f7f;
+}
