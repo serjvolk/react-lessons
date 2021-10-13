@@ -1,0 +1,27 @@
+Селекторы - это функция которая принимает state достает нужное и возвращает в бизнес.
+
+В файлике users-selectors.js мы сделали эти селекторы.
+Выглядит селектор так:
+
+export const getPageSize = (state) => {
+    return state.usersPage.pageSize;
+}
+
+Вызывается он в mapStateToProps таким образом:
+
+let mapStateToProps = (state) => { // Принимает весь state и отдает только то что нужно
+    return {
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
+    }
+}
+
+зачем нужны эти селекторы???
+
+Представь что в state мы решили переименовать pageSize в просто page. Получается что мы теперь везде
+по всему проекту должны сделать это переименование. А благодаря селекторам, мы изменение делаем только внутри
+селектора и все.
