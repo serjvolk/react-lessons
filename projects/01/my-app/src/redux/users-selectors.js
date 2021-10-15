@@ -1,6 +1,15 @@
-export const getUsers = (state) => {
+import {createSelector} from "reselect";
+
+// Это простой примитивный селектор
+const getUsersSelector = (state) => {
     return state.usersPage.users;
 }
+
+/* Это уже более сложный селектор включающий в себя результат примитивного селектора,
+* и он запустится только если увидит изменения в примитивном селекторе */
+export const getUsers = createSelector(getUsersSelector, (users) => {
+    return users.filter(u => true);
+})
 
 export const getPageSize = (state) => {
     return state.usersPage.pageSize;
