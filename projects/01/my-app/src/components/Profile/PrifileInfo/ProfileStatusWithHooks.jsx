@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import css from "./../Profile.module.css";
 
 const ProfileStatusWithHooks = (props) => {
@@ -6,6 +6,11 @@ const ProfileStatusWithHooks = (props) => {
     // useState это массив в нем первый элемент это  editMode, второй - функция которая может менять это значение
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
+
+    // Подобие componentDidMount. Если произошло обновление props, сетаем новый статус.
+    useEffect(() => {
+        setStatus(props.status);
+    }, [props.status]); // Зависимость от props.status. Тоесть что мы отслеживаем
 
     const activateEditMode = () => {
         setEditMode(true);
