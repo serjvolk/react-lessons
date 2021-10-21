@@ -8,8 +8,10 @@ import {Textarea} from "../common/FormsControls/FormsControls";
 
 const maxLength10 = maxLengthCreator(10);
 
-function Profile (props) {
-    let postsElements = props.posts.map((post) =>  <Posts postMessage={post.msg} id={post.id} key={post.id}/>);
+const Profile = React.memo(props => {
+    console.log('RENDER');
+    console.log(props);
+    let postsElements = props.posts.map((post) => <Posts postMessage={post.msg} id={post.id} key={post.id}/>);
 
     let addNewPostMessage = (values) => {
         props.addPostMessage(values.newPostText);
@@ -18,15 +20,16 @@ function Profile (props) {
     return (
         <div className={css.profile}>
             <div className="container">
-                <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileInfo profile={props.profile} status={props.status}
+                             updateStatus={props.updateStatus}/>
                 <ul className={css.posts}>
                     {postsElements}
                 </ul>
-                <AddPostFormRedux onSubmit={addNewPostMessage} />
+                <AddPostFormRedux onSubmit={addNewPostMessage}/>
             </div>
         </div>
     );
-}
+});
 
 const AddPostForm = (props) => {
     return (
