@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Technologies from './components/Technologies/Technologies';
 import Comments from "./components/Comments/Comments";
 import Nav from "./components/Nav/Nav";
@@ -22,26 +22,24 @@ class App extends Component {
             return <Preloader />
         }
         return (
-            <BrowserRouter>
-                <div id="main">
-                    <HeaderContainer/>
-                    <div className="container">
-                        <div className="main__page">
-                            <div className="main__aside">
-                                <Nav/>
-                            </div>
-                            <div className="main__content">
-                                <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                                <Route path='/technologies' render={() => <Technologies/>}/>
-                                <Route path='/comments' render={() => <Comments/>}/>
-                                <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                                <Route path='/users' render={() => <UsersContainer/>}/>
-                                <Route path='/login' render={() => <Login/>}/>
-                            </div>
+            <div id="main">
+                <HeaderContainer/>
+                <div className="container">
+                    <div className="main__page">
+                        <div className="main__aside">
+                            <Nav/>
+                        </div>
+                        <div className="main__content">
+                            <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                            <Route path='/technologies' render={() => <Technologies/>}/>
+                            <Route path='/comments' render={() => <Comments/>}/>
+                            <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                            <Route path='/users' render={() => <UsersContainer/>}/>
+                            <Route path='/login' render={() => <Login/>}/>
                         </div>
                     </div>
                 </div>
-            </BrowserRouter>
+            </div>
         );
     }
 }

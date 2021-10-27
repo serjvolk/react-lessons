@@ -1,0 +1,33 @@
+В этом уроке мы делаем рефакторинг кода.
+
+1) В редьюсерах должны быть уникальные значения. У нас сейчас так:
+const SET_USER_DATA = 'SET_USER_DATA';
+... а можно и так:
+const SET_USER_DATA = 'svone/auth/SET_USER_DATA';
+
+2) Вместо .then() лучше использовать async await
+Было:
+export const getAuthUserData = () => (dispatch) => {
+    return authAPI.me().then(response => {
+        if(response.data.resultCode === 0){
+            let {id, login, email} = response.data.data;
+            dispatch(setAuthUserData(id, email, login, true));
+        }
+    });
+}
+Стало:
+export const getAuthUserData = () => async (dispatch) => {
+    let response = await authAPI.me();
+    if (response.data.resultCode === 0) {
+        let {id, login, email} = response.data.data;
+        dispatch(setAuthUserData(id, email, login, true));
+    }
+}
+
+3) Еще вот такая фича:
+Мы пишем так  = (props) =>    и используем так {props.error}
+А можно взять с пропсов только то что нам нужно 
+так  = ({handleSubmit, error}) =>  а использовать так {error}
+
+
+Кароче куча деструктуризации которую лучше увидеть сравнением файлов

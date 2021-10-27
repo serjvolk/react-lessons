@@ -4,14 +4,3 @@
     object-fit: cover;
     border-radius: 50px;
 }
-
-.navigation span{
-    display: inline-block;
-    padding: 4px 16px;
-    font-size: 20px;
-    line-height: 24px;
-}
-
-.selectedPage{
-    color: #e87a7a;
-}
