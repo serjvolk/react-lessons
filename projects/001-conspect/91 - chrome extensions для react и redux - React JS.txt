@@ -1,0 +1,10 @@
+И так расширения для Chrome которые помогают в разработке
+
+1) React Developer Tools - в инструментах разработчика теперь видны компоненты
+
+2) Redux DevTools - Смотрим изменения state в реальном времени. 
+Для ее работы в redux-store.js меняем одну строчку на две:
+
+// let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
