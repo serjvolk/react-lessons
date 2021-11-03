@@ -1,0 +1,57 @@
+Кароче базар про ленивую подгрузку компонент. Не загружаем все сразу а только необходимые.
+Для этого нужно переписать импорты вот так:
+
+//import DialogsContainer from "./components/Dialogs/DialogsContainer";
+const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
+
+
+А ниже там где вызывается компонента вместо:
+
+			    <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+
+написать так:
+
+			    <Route path='/profile/:userId?' render={() => {
+                                return <React.Suspense fallback={<div>Loading...</div>}>
+                                    <ProfileContainer/>
+                                </React.Suspense>
+                            }}/>
+
+React.Suspense будет показывать блок какой мы захотим пока будет подгружаться компонента.
+
+
+
+Теперь у нас в роутах вот такое:
+
+			    <Route path='/profile/:userId?' render={() => {
+                                return <React.Suspense fallback={<div>Loading...</div>}>
+                                    <ProfileContainer/>
+                                </React.Suspense>
+                            }}/>
+                            <Route path='/dialogs' render={() => {
+                                return <React.Suspense fallback={<div>Loading...</div>}>
+                                    <DialogsContainer/>
+                                </React.Suspense>
+                            }}/>
+
+
+Чтобы это упростить мы создаем хок. А хок это функция которая принимает компоненту и возвращает компоненту.
+Делаем хок withSuspense
+
+import React from "react";
+import Preloader from "../components/common/Preloader/Preloader";
+
+export const withSuspense = (Component) => {
+    return (props) => {
+        return <React.Suspense fallback={<Preloader />}>
+            <Component {...props}/>
+        </React.Suspense>
+    };
+}
+
+и тепеть роуты выглядят так:
+<Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
+<Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
+
+
+Спасибо за внимание)))
