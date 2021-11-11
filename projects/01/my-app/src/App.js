@@ -6,8 +6,6 @@ import Comments from "./components/Comments/Comments";
 import Nav from "./components/Nav/Nav";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-//import DialogsContainer from "./components/Dialogs/DialogsContainer";
-//import ProfileContainer from "./components/Profile/ProfileContainer";
 
 import Login from "./components/Login/Login";
 import {Component} from "react";

@@ -20,7 +20,10 @@ const Profile = React.memo(props => {
     return (
         <div className={css.profile}>
             <div className="container">
-                <ProfileInfo profile={props.profile} status={props.status}
+                <ProfileInfo profile={props.profile}
+                             isOwner={props.isOwner}
+                             status={props.status}
+                             savePhoto={props.savePhoto}
                              updateStatus={props.updateStatus}/>
                 <ul className={css.posts}>
                     {postsElements}
