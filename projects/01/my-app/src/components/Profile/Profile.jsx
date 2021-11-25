@@ -11,7 +11,7 @@ const maxLength10 = maxLengthCreator(10);
 const Profile = React.memo(props => {
     console.log('RENDER');
     console.log(props);
-    let postsElements = props.posts.map((post) => <Posts postMessage={post.msg} id={post.id} key={post.id}/>);
+    let postsElements = props.posts.map((post) => <Posts key={post.id} postMessage={post.msg} id={post.id} key={post.id}/>);
 
     let addNewPostMessage = (values) => {
         props.addPostMessage(values.newPostText);
@@ -24,6 +24,7 @@ const Profile = React.memo(props => {
                              isOwner={props.isOwner}
                              status={props.status}
                              savePhoto={props.savePhoto}
+                             saveProfile={props.saveProfile}
                              updateStatus={props.updateStatus}/>
                 <ul className={css.posts}>
                     {postsElements}

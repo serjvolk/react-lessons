@@ -1,0 +1,5 @@
+Причесываем Profile.
+
+Есть что-то новенькое...
+Чтобы инпуты изначально имели value мы в ProfileDataForm должны 
+параметром initialValues передать profile
