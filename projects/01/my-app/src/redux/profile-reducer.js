@@ -70,10 +70,15 @@ export const getStatus = (userId) => async (dispatch) => {
 };
 
 export const updateStatus = (status) => async (dispatch) => {
-    let response = await profileAPI.updateStatus(status);
-    if (response.data.resultCode === 0) {
-        dispatch(setStatus(status));
+    try { // Если нет ошибок
+        let response = await profileAPI.updateStatus(status);
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
+    }catch (error){ // Если возникла ошибка при отправке/получении данных
+        alert("Что то пошло не так");
     }
+
 };
 
 export const savePhoto = (file) => async (dispatch) => {

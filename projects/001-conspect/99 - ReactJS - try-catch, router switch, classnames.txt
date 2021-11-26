@@ -1,0 +1,65 @@
+Кароче в этом уроке объясняшки по всему проекту. И что-то новенькое что еще не проходили.
+
+1) Допустим у нас есть такое в App.js
+
+	<Route path='/login/facebook' render={() => <div>FACEBOOK</div>}/>
+        <Route path='/login' render={() => <Login/>}/>
+
+В этом случае если урле /login/facebook то у нас отобразятся обе эти компоненты.
+Чтобы сделать так чтобы вторая не рендерилась можно добавить exact для второй, что
+означает, что url должен строго совпадать. Тоесть будет вот так:
+
+	<Route path='/login/facebook' render={() => <div>FACEBOOK</div>}/>
+        <Route exact path='/login' render={() => <Login/>}/>
+
+Есть и второй вариент, это использовать <Switch> в этом случае когда браузер откроет урлу
+/login/facebook он начнет по очереди сверху вниз, перебирать компоненты и искать вхождение, 
+и как только он его найдет он остановится и дальше не пойдет смотреть что там за компоненты еще есть.
+
+Теперь получается мы в самый конец можем добавить 404 страницу:
+	<Route path='*' render={() => <div>404 NOT FOUND</div>}/>
+и получается если мы введем допустим такой url /sodjrerjio то <Switch> начнет сверху вниз перебирать все
+компоненты, ничего похожего не найдет, и отобразит последнюю компоненту, где path='*'
+
+2) classnames. допустим у нас у дивки должно быть два класса, тогда нам прийдется писать вот так:
+	<div className={css.navigation + ' ' + css.pages}>
+но это не так удобно. При помощи classnames мы можем написать так:
+	<div className={cn(css.navigation, css.pages)}>
+
+Так же если допустим класс navigation должен быть всегда, а класс pages только при условии, мы можем
+записать вот так:
+	<div className={cn(css.navigation, {[css.pages]: true})}>
+и вместо true мы пихаем условие. 
+
+3) Ошибки которые мы не предусмотрели при разработке их тоже можно все вместе 
+задетектить и что-то дальше поделать.
+
+Для этого в App.js мы написали вот такое:
+
+    catchAllUnhandledErrors = (reason, promise) => {
+        alert("Some errors occurred");
+    }
+
+    componentDidMount() {
+        this.props.initializeApp();
+        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+    }
+
+тут addEventListener подписывается на все unhandledrejection необработанные ошибки, тоесть те 
+которые красным выбрасываются в консоль. НО, ОЧЕНЬ ВАЖНО, когда мы используем чтото из нативного 
+js как тут например мы использовали addEventListener,  мы должны оязатьльно идемонтировать эту 
+подписку в момент когда компонента будет уничтожена, тоесть в момент componentWillUnmount, мы
+делаем removeEventListener.
+
+4) Так же для отлова ошибок типа 404, 30X ... можно и нужно использовать try catch.
+Для примера мы в api.js испортим API-KEY. И в profile-reducer.js в updateStatus добавляем
+отлов ошибок. При том что если мы обработали ошибку через try catch то предыдущий отлавливатель
+ошибок который был в пункте 3, уже не сработает. 
+
+
+
+
