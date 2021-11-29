@@ -1,0 +1,1 @@
+1) В нужной папке npx create-react-app my-app-name
